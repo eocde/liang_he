@@ -29,7 +29,11 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-controller="Cart" asp-action="Cart">购物车</a></li>
+        <li>
+            <a href="/Cart?retUrl=@WebUtility.UrlEncode(ViewBag.contBuy.ToString())">
+                <span lang="zh-cn">我的购物车</span>
+            </a>
+        </li>
         <li><a asp-area="" asp-controller="Account" asp-action="Register"><span class="glyphicon glyphicon-user"></span>&nbsp;注册</a></li>
         <li><a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a></li>
     </ul>

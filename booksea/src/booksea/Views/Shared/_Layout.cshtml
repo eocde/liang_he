@@ -1,11 +1,13 @@
 ﻿@inject BookSeaContext db
-@using System.Net
+@{
+    ViewBag.contBuy = "/";
+}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>@ViewData["Title"] - BookSea</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,6 +19,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
 </head>
 <body style="overflow-x:hidden;">
     <div class="navbar navbar-inverse">
@@ -39,17 +42,23 @@
                 </a>
             </div>*@
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="">新书预售</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="">关于我们</a></li>
-                    <li><a asp-controller="Cart" asp-action="Cart">购物车</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">首页</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="">新书预售</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="">关于我们</a></li>
+                        @*<li><a asp-controller="Cart" asp-action="Cart">购物车</a></li>*@
+                       @*<li> <a href="/Cart?retUrl=@WebUtility.UrlEncode(ViewBag.contBuy.ToString())">
+                            <span lang="zh-cn">我的购物车</span>
+                        </a>
+                        </li>*@
+                        </ul>
+                  </div>
+
+                    @await Html.PartialAsync("_LoginPartial")
+                </div>
         </div>
     </div>
-        @RenderBody()
+    @RenderBody()
     <div class="footer">
         <div class="footer-top">
             <p>Copyrights © 2017 Bootstrap 响 应 式  网 站  | 书 海 版 权 所 有</p>
@@ -80,7 +89,7 @@
             </ul>
         </div>
     </div>
-    
+
 
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
